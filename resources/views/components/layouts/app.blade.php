@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>{{ $title ?? 'Page Title' }}</title>
+  <title>Subscription - @yield('title')</title>
   <meta content="Login" property="og:title">
   <meta content="Login" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -17,7 +18,6 @@
   <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="../images/webclip.png" rel="apple-touch-icon">
     @livewireStyles
-     @livewireScripts
 </head>
 <body>
  <nav class="navbar section-arround">
@@ -28,9 +28,12 @@
           <nav role="navigation" class="nav-links w-nav-menu">
             <a href="{{ url('/') }}" aria-current="page" class="w-nav-link w--current">Home</a>
             @auth
-            <a href="{{ url('accounts/logout') }}" class="w-nav-link">Logout</a>
+            <form method="POST" class="w-nav-link" action="{{ url('accounts/logout') }}">
+            @csrf
+            <input type="submit" value="Logout" class="w-nav-link"></input>
+            </form>
             @else
-            <a href="{{ url('accounts/login') }}" class="w-nav-link">Login</a>
+            <a href="{{ url('/login') }}" class="w-nav-link">Login</a>
             @endauth
           </nav>
           <div class="mobile-menu-btn w-nav-button">
@@ -42,8 +45,11 @@
       </div>
     </div>
   </nav>
-{{ $slot }}
+  {{ $slot }}
+@yield("content")
+@livewireScripts
 <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=66a3ce2c2e50de662ec44dd6" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="{{ asset('/js/webflow.js') }}" type="text/javascript"></script>
 </body>
 </html>
+

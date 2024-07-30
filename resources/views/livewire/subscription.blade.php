@@ -1,6 +1,3 @@
-@extends('layout.app')
-@section('Title', 'Subscription')
-@section('content')
 <section class="section-center">
     <div class="w-layout-blockcontainer container w-container">
       <div class="rows-wrapper">
@@ -33,6 +30,4 @@
                 </div>
               </div>
             </div>
-          </section>
-@endsection
-
+</section>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,7 @@ Route::get('/login', function () {
     return view('accounts.login');
 });
 
-Route::get('/subscription', function () {
-    return view('subscription');
-});
+Route::get('/subscription', Subscription::class);
 
 Route::get('/success', function () {
     return view('success');

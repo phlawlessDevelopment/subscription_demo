@@ -5,10 +5,11 @@ namespace App\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-use function Termwind\render;
 
 class Subscription extends Component
 {
+    public $title = "Manage";
+
     public function render()
     {
         return view('livewire.subscription');
